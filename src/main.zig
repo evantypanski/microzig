@@ -203,7 +203,7 @@ pub fn addEmbeddedExecutable(
     // - Generate the linker scripts from the "chip" or "board" module instead of using hardcoded ones.
     //   - This requires building another tool that runs on the host that compiles those files and emits the linker script.
     //    - src/tools/linkerscript-gen.zig is the source file for this
-    exe.inner.bundle_compiler_rt = (exe.inner.target.cpu_arch.? != .avr); // don't bundle compiler_rt for AVR as it doesn't compile right now
+    exe.inner.bundle_compiler_rt = true;
 
     // these modules will be re-exported from core/microzig.zig
     exe.inner.addModule("microzig-config", config_module);
