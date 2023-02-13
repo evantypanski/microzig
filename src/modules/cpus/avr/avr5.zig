@@ -88,7 +88,7 @@ fn makeIsrHandler(comptime name: []const u8, comptime func: anytype) type {
         pub const exported_name = "microzig_isr_" ++ name;
 
         pub fn isr_vector() callconv(.Signal) void {
-            @call(.{ .modifier = .always_inline }, func, .{});
+            @call(.always_inline, func, .{});
         }
 
         comptime {
